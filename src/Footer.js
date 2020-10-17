@@ -1,8 +1,15 @@
 import React from "react";
 
-import db from "./firebase";
+import db, { storage } from "./firebase";
+
 function Footer() {
   const [user, setUser] = React.useState([]);
+  const Admin = () => {
+    const admin = prompt("輸入Admin認證");
+    if (admin === "keddy406") {
+      // data layer pass
+    }
+  };
   React.useEffect(
     () =>
       db
@@ -17,7 +24,9 @@ function Footer() {
     <div className="footer">
       <p>Copyright @ {user[0]?.name} All Rights Reserved</p>
 
-      <p className="footer__admin">Admin</p>
+      <p className="footer__admin" onClick={Admin}>
+        Admin
+      </p>
     </div>
   );
 }

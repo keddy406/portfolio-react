@@ -116,7 +116,7 @@ function Navbar() {
           <ListItemIcon>
             <RiLineFill fontSize="large" />
           </ListItemIcon>
-          <ListItemText primary="twkccy1990" />
+          <ListItemText primary="douknowccy" />
         </StyledMenuItem>
         <StyledMenuItem>
           <ListItemIcon>
