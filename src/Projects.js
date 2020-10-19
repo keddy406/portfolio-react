@@ -20,12 +20,8 @@ function Projects() {
             }))
           )
         ),
-    [projects]
+    []
   );
-  // upload
-
-  //
-  // console.log(projects);
 
   return (
     <div className="projects">
