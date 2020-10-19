@@ -63,9 +63,19 @@
   display: flex;
   position: relative;
 }
+.project__container {
+  display: flex;
+}
+.project__info {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid black;
+}
 .project__image {
-  object-fit: cover !important;
-  height: 400px !important;
+  object-fit: cover;
+  height: 400px;
+  width: 400px;
 }
 .project__image:hover {
   transform: scale(1.1);
@@ -83,7 +93,11 @@
 .project__delete:hover {
   color: red;
 }
-
+.upload__button:hover {
+  color: gray !important;
+  background-color: #2f3135 !important;
+  transition: transform ease-in-out 0.3s !important;
+}
 .project__button {
   color: gray !important;
   background-color: #2f3135 !important;

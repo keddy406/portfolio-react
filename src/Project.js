@@ -5,79 +5,57 @@
 // TODO:
 
 import React from "react";
+import db, { storage } from "./firebase";
 // material ui
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 500,
-    maxHeight: 800,
-    height: 500,
-  },
-});
-function Project({ id, data: { description, githubUrl, img, name, url } }) {
-  const classes = useStyles();
+function Project({
+  id,
+  data: { description, githubUrl, img, name, url, language, imageName },
+}) {
   const [user, setUser] = React.useState(true);
-
+  //delete project from database and img from storage
   const deleteProject = () => {
-    //   delete project from redux
+    // database
+    db.collection("projects")
+      .doc(id)
+      .delete()
+      .then(function () {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
+    // storage
+    storage
+      .ref("images")
+      .child(imageName)
+      .delete()
+      .then(function () {
+        // File deleted successfully
+      })
+      .catch(function (error) {
+        // Uh-oh, an error occurred!
+      });
   };
-
+  // console.log(imageName);
+  console.log(storage.ref("images").child(imageName));
   return (
     <div className="project">
-      <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia
-            className="project__image"
-            component="img"
-            alt="Contemplative Reptile"
-            image={img}
-            title="造訪網站"
-          />
-
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {name}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-
-        <CardActions>
-          <Button size="small" className="project__button">
-            Github
-          </Button>
-          <Button size="small" className="project__button">
-            React.js
-          </Button>
-          <Button size="small" className="project__button">
-            Javascript
-          </Button>
-          <Button size="small" className="project__button">
-            Css
-          </Button>
-          <Button size="small" className="project__button">
-            Firebase
-          </Button>
-          <Button size="small" className="project__button">
-            material ui
-          </Button>
-        </CardActions>
-      </Card>
-      {user && (
-        <DeleteIcon className="project__delete" onClick={() => deleteProject} />
-      )}
+      <div className="project__container">
+        <img className="project__image" src={img} alt="" />
+        <div className="project__info">
+          <h1>{name}</h1>
+          <p>圖片名{imageName}</p>
+          <DeleteIcon onClick={deleteProject} />
+          {language &&
+            Object.keys(language).map(
+              (key, index) =>
+                language[key] === true && <p key={index}>{`${key}`}</p>
+            )}
+        </div>
+      </div>
     </div>
   );
 }
