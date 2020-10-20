@@ -1,32 +1,28 @@
 import React from "react";
 
-import db, { storage } from "./firebase";
+import db, { auth } from "./firebase";
+import { Link } from "react-router-dom";
+import { selectUser } from "./redux/userSlice";
+import { useSelector } from "react-redux";
 
 function Footer() {
-  const [user, setUser] = React.useState([]);
-  const Admin = () => {
-    const admin = prompt("輸入Admin認證");
-    if (admin === "keddy406") {
-      // data layer pass
-    }
-  };
-  React.useEffect(
-    () =>
-      db
-        .collection("info")
-        .onSnapshot((snapshot) =>
-          setUser(snapshot.docs.map((doc) => doc.data()))
-        ),
-    []
-  );
+  const user = useSelector(selectUser);
 
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  // console.log(user);
   return (
     <div className="footer">
-      <p>Copyright @ {user[0]?.name} All Rights Reserved</p>
+      <p>Copyright @ chunyuan All Rights Reserved</p>
 
-      <p className="footer__admin" onClick={Admin}>
+      <Link className="footer__admin" to="/login">
         Admin
-      </p>
+      </Link>
+      {user && (
+        <p className="footer__logout" onClick={() => auth.signOut()}>
+          登出
+        </p>
+      )}
     </div>
   );
 }

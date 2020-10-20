@@ -36,12 +36,43 @@
 }
 /* main */
 .home,
+.login,
 .projects,
 .error {
   flex: 1;
   background-color: #363a3f;
 }
 /* home */
+/* login */
+
+.login {
+  display: grid;
+  place-items: center;
+}
+.login__form {
+  display: flex;
+  flex-direction: column;
+}
+.login__options {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: transparent;
+  border: 1px solid gray;
+  border-radius: 50px;
+  outline-width: 0;
+  color: white;
+  font-size: large;
+}
+.login__button {
+  margin-top: 10px;
+  border-radius: 10px;
+  color: gray;
+  font-weight: bold;
+}
+.login__button:hover {
+  color: red;
+  transition: 0.1s ease-in-out;
+}
 /* projects */
 .projects {
   flex-direction: column;
@@ -123,8 +154,20 @@
   margin-left: 100px;
   transition: transform ease-in-out 0.3s !important;
   cursor: pointer;
+  text-decoration: none;
+  color: gray;
 }
 .footer__admin:hover {
+  transform: scale(1.1);
+  color: white;
+}
+.footer__logout {
+  margin-left: 100px;
+  transition: transform ease-in-out 0.3s !important;
+  cursor: pointer;
+  color: gray;
+}
+.footer__logout:hover {
   transform: scale(1.1);
   color: white;
 }

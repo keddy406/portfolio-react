@@ -40,7 +40,7 @@ function Project({
       });
   };
   // console.log(imageName);
-  console.log(storage.ref("images").child(imageName));
+  // console.log(storage.ref("images").child(imageName));
   return (
     <div className="project">
       <div className="project__container">

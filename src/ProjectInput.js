@@ -2,7 +2,6 @@ import React from "react";
 import db, { storage } from "./firebase";
 import firebase from "firebase";
 import { Button } from "@material-ui/core";
-import { LanguageTwoTone } from "@material-ui/icons";
 function ProjectInput() {
   const [admin, setAdmin] = React.useState(true);
 
@@ -118,7 +117,7 @@ function ProjectInput() {
             value={language}
             checked={language.React}
           />
-          <label for="React">使用React</label>
+          <label>使用React</label>
           {/* checkbox Js 2 */}
           <input
             type="checkbox"
@@ -132,7 +131,7 @@ function ProjectInput() {
             value={language}
             checked={language.Js}
           />
-          <label for="使用Javascript">使用Javascript</label>
+          <label>使用Javascript</label>
           {/* checkbox Css 3 */}
           <input
             type="checkbox"
@@ -146,7 +145,7 @@ function ProjectInput() {
             value={language}
             checked={language.Css}
           />
-          <label for="使用Css">使用Css</label>
+          <label>使用Css</label>
           {/* checkbox Firebase 4 */}
           <input
             type="checkbox"
@@ -160,7 +159,7 @@ function ProjectInput() {
             value={language}
             checked={language.Firebase}
           />
-          <label for="Firebase">使用Firebase</label>
+          <label>使用Firebase</label>
           {/* checkbox Context 5 */}
           <input
             type="checkbox"
@@ -174,7 +173,7 @@ function ProjectInput() {
             value={language}
             checked={language.Context}
           />
-          <label for="Context">使用Context</label>
+          <label>使用Context</label>
           {/* checkbox Redux 6 */}
           <input
             type="checkbox"
@@ -188,7 +187,7 @@ function ProjectInput() {
             value={language}
             checked={language.Redux}
           />
-          <label for="Redux">使用Redux</label>
+          <label>使用Redux</label>
           {/* checkbox NodeJs 7 */}
           <input
             type="checkbox"
@@ -202,7 +201,7 @@ function ProjectInput() {
             value={language}
             checked={language.NodeJs}
           />
-          <label for="NodeJs">使用NodeJs</label>
+          <label>使用NodeJs</label>
           {/* checkbox Strapi 8 */}
           <input
             type="checkbox"
@@ -216,7 +215,7 @@ function ProjectInput() {
             value={language}
             checked={language.Strapi}
           />
-          <label for="Strapi">使用Strapi</label>
+          <label>使用Strapi</label>
         </div>
         <div className="upload__url">
           <input

@@ -1,12 +1,15 @@
 import React from "react";
-import db, { storage } from "./firebase";
 import Project from "./Project";
-import firebase from "firebase";
 import ProjectInput from "./ProjectInput";
-import { Button } from "@material-ui/core";
+
+import { useSelector } from "react-redux";
+import { selectUser } from "./redux/userSlice";
+
+import db from "./firebase";
 function Projects() {
+  const user = useSelector(selectUser);
   const [projects, setProjects] = React.useState([]);
-  const [admin, setAdmin] = React.useState(true);
+  // const [admin, setAdmin] = React.useState(true);
   React.useEffect(
     () =>
       db
@@ -25,7 +28,7 @@ function Projects() {
 
   return (
     <div className="projects">
-      {admin && <ProjectInput />}
+      {user && <ProjectInput />}
       {projects?.map(({ id, data }) => (
         <Project key={id} id={id} data={data} />
       ))}
